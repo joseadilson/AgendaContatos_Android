@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     private RepositorioContato repositorioContato;
     private Contato contato;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
