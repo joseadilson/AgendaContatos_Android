@@ -1,63 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context="com.example.jose.agendacontato.Tela_CadContatos"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/lnlImagem"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salvar"
+                android:id="@+id/btnSalvar2"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                android:layout_gravity="left" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alterar"
+                android:id="@+id/btnAlterar"
+                android:visibility="invisible"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Excluir"
+                android:visibility="invisible"
+                android:id="@+id/btnExcluir"
+                android:layout_gravity="right"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_weight="0.6"
+        android:layout_height="0dp">
+
+    <LinearLayout
+        android:id="@+id/lnlBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:id="@+id/lnlCampoNome">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/lbl_Nome"
-            android:id="@+id/textView2" />
 
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/edtNome"
-            android:layout_gravity="center_horizontal" />
+            app:met_iconLeft="@drawable/ic_account_grey600_24dp"
+            android:hint="Nome"
+            app:theme="@style/AppTheme2"/>
+
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:id="@+id/lnlCampoTelefone">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/lbl_Telefone"
-            android:id="@+id/textView3" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <EditText
-                android:layout_width="wrap_content"
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:inputType="phone"
                 android:ems="10"
-                android:id="@+id/edtTelefone" />
+                android:id="@+id/edtTelefone"
+                app:met_iconLeft="@drawable/ic_phone_grey600_24dp"
+                android:hint="Telefone"
+                app:theme="@style/AppTheme2"/>
 
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:id="@+id/spnTipoTelefone" />
         </LinearLayout>
     </LinearLayout>
@@ -66,30 +129,30 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:id="@+id/lnlCampoEmail">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/lblEmail"
-            android:id="@+id/textView4" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
 
-            <EditText
-                android:layout_width="wrap_content"
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="textEmailAddress"
                 android:ems="10"
                 android:id="@+id/edtEmail"
-                android:inputType="textWebEmailAddress" />
+                app:met_iconLeft="@drawable/ic_email_grey600_24dp"
+                android:hint="Email"
+                app:theme="@style/AppTheme2"/>
 
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:id="@+id/spnTipoEmail" />
         </LinearLayout>
     </LinearLayout>
@@ -98,30 +161,29 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:id="@+id/lnlCampoEndereco">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/lblEndereco"
-            android:id="@+id/textView5" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
 
-            <EditText
-                android:layout_width="wrap_content"
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/edtEndereco"
-                android:inputType="textPersonName" />
+                app:met_iconLeft="@drawable/ic_map_marker_grey600_24dp"
+                android:hint="Endereço"
+                app:theme="@style/AppTheme2"/>
 
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:id="@+id/spnTipoEndereco" />
         </LinearLayout>
     </LinearLayout>
@@ -130,30 +192,30 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:id="@+id/lnlCampoDatasEspeciais">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/lblDatasEspeciais"
-            android:id="@+id/textView6" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
 
-            <EditText
-                android:layout_width="wrap_content"
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="date"
                 android:ems="10"
                 android:id="@+id/edtDatasEspeciais"
-                android:inputType="date" />
+                app:met_iconLeft="@drawable/ic_calendar_grey600_24dp"
+                android:hint="Datas especiais"
+                app:theme="@style/AppTheme2"/>
 
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:id="@+id/spnDatasEspeciais" />
         </LinearLayout>
     </LinearLayout>
@@ -162,60 +224,46 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:id="@+id/lnlGrupo">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/lbl_grupos"
-            android:id="@+id/textView7" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
 
-            <EditText
+
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:ems="10"
-                android:id="@+id/edtGrupos" />
+                android:id="@+id/edtGrupos"
+                app:met_iconLeft="@drawable/ic_account_multiple_grey600_24dp"
+                android:hint="Grupos"
+                app:theme="@style/AppTheme2"/>
 
         </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Salvar"
-            android:id="@+id/btnSalvar"
-            android:layout_weight="1"
-            android:layout_gravity="left" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alterar"
-            android:id="@+id/btnAlterar"
-            android:visibility="invisible"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Excluir"
-            android:visibility="invisible"
-            android:id="@+id/btnExcluir"
-            android:layout_gravity="right"
-            android:layout_weight="1" />
     </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_camera_white_24dp"
+        app:layout_anchor="@id/lnlImagem"
+        app:layout_anchorGravity="bottom|right|end"/>
+
+
+</android.support.design.widget.CoordinatorLayout>
+
+

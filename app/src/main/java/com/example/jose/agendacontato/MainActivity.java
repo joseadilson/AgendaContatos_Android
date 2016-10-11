@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.View;
@@ -30,7 +31,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AdapterView.OnItemClickListener {
 
-    private ImageButton btnAdicionar;
+    private FloatingActionButton btnAdicionar;
     private EditText edtPesquisa;
     private ListView lstContatos;
     private ArrayAdapter<Contato> adpContatos;
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        btnAdicionar = (ImageButton)findViewById(R.id.btnAdicionar);
+        btnAdicionar = (FloatingActionButton) findViewById(R.id.btnAdicionar);
         edtPesquisa = (EditText)findViewById(R.id.edtPesquisa);
         lstContatos = (ListView)findViewById(R.id.lstContatos);
 
@@ -104,9 +105,8 @@ public class MainActivity extends AppCompatActivity
     //
     @Override
     public void onClick(View v){
-        Intent it1 = new Intent(this, Tela_CadContatos.class);
+        Intent it1 = new Intent(MainActivity.this, Tela_CadContatos.class);
         startActivityForResult(it1, 0);
-
     }
 
     // RESPONSAVEL POR ATT O COMPONENTE LISTVIEW QUANDO FOR RELAIZADO UM CADASTRO

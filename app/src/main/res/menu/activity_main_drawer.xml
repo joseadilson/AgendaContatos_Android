@@ -3,12 +3,11 @@
 
     <group android:checkableBehavior="single">
 
-
-
         <item
             android:id="@+id/mni_acao1"
             android:icon="@android:drawable/ic_menu_camera"
-            android:title="@string/lbl_salvar" />
+            android:title="@string/lbl_salvar"
+            />
 
         <item
             android:id="@+id/mni_acao2"
