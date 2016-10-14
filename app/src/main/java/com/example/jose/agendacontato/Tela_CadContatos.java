@@ -4,8 +4,12 @@
     import android.app.DatePickerDialog;
     import android.app.ProgressDialog;
     import android.content.DialogInterface;
+    import android.content.Intent;
     import android.database.SQLException;
     import android.database.sqlite.SQLiteDatabase;
+    import android.graphics.Bitmap;
+    import android.net.Uri;
+    import android.provider.MediaStore;
     import android.support.v7.app.AppCompatActivity;
     import android.os.Bundle;
     import android.widget.*;
@@ -15,6 +19,7 @@
     import com.example.jose.agendacontato.dominio.Entidades.Contato;
     import com.example.jose.agendacontato.dominio.RepositorioContato;
 
+    import java.io.IOException;
     import java.text.DateFormat;
     import java.util.Calendar;
     import java.util.Date;
@@ -28,6 +33,8 @@
         private Button btnExcluir;
 
         ProgressDialog progressDialog;
+        private ImageView imageView;
+
 
         private EditText edtNome;
         private EditText edtEmail;
@@ -68,6 +75,7 @@
             btnExcluir = (Button)findViewById(R.id.btnExcluir);
 
             progressDialog = new ProgressDialog(Tela_CadContatos.this);
+            imageView =  (ImageView)findViewById(R.id.imgFoto);
 
             //Busca os componentes do tipo text
             edtNome = (EditText)findViewById(R.id.edtNome);
@@ -247,6 +255,34 @@
         }
 
 
+        //Busca Foto
+        public final static int PICK_PHOTO_CODE = 1039;
+
+        public void onClickFoto(View view) {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivityForResult(intent, PICK_PHOTO_CODE);
+            }
+        }
+
+        @Override
+        public void onActivityResult(int request, int resultCode, Intent data){
+            if (data != null) {
+                Uri photoUri = data.getData();
+                Bitmap selectedImage = null;
+                try {
+                    selectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(),photoUri);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                ImageView ivPreview = (ImageView)findViewById(R.id.imgFoto);
+                ivPreview.setImageBitmap(selectedImage);
+            }
+        }
+        //
+
+
+
         //DATA
         //Responsavel por exibir janela de dialogo para selecionar a data
         private void exibeData(){
@@ -296,6 +332,7 @@
                 contato.setDatasEspeciais(data);
             }
         }
+        //
 
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
@@ -316,6 +353,6 @@
                     }, 2000);
 
         }
-        //
+
 
     }
