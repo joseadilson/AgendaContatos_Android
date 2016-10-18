@@ -204,6 +204,18 @@
 
             edtGrupos.setText(contato.getGrupos());
 
+            //Reculperar imagem
+            Bitmap selectedImage = null;
+            Uri photoUri = Uri.parse(contato.getFoto().toString());
+            try {
+                selectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(),photoUri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            ImageView ivPreview = (ImageView)findViewById(R.id.imgFoto);
+            ivPreview.setImageBitmap(selectedImage);
+            //
         }
 
         private void excluir(){
@@ -230,6 +242,8 @@
                 contato.setEmail(edtEmail.getText().toString());
                 contato.setEndereco(edtEndereco.getText().toString());
                 contato.setGrupos(edtGrupos.getText().toString());
+
+
 
                 //Retorna o indice selecionado no spinner
                 contato.setTipoTelefone(String.valueOf( spnTipoTelefone.getSelectedItemPosition()));
@@ -268,7 +282,10 @@
         @Override
         public void onActivityResult(int request, int resultCode, Intent data){
             if (data != null) {
+                //Salvar imagem
                 Uri photoUri = data.getData();
+                Toast.makeText(this, "Resulti: "+photoUri, Toast.LENGTH_SHORT).show();
+                contato.setFoto(photoUri.toString());
                 Bitmap selectedImage = null;
                 try {
                     selectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(),photoUri);

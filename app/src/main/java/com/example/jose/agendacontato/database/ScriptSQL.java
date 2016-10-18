@@ -20,6 +20,7 @@ public class ScriptSQL {
         sqlBuilder.append("TIPOENDERECO       VARCHAR (1), ");
         sqlBuilder.append("DATASESPECIAIS     DATE, ");
         sqlBuilder.append("TIPODATASESPECIAIS VARCHAR (1), ");
+        sqlBuilder.append("FOTO               VARCHAR (500), ");
         sqlBuilder.append("GRUPOS             VARCHAR (255) ");
         sqlBuilder.append(");");
         return sqlBuilder.toString();

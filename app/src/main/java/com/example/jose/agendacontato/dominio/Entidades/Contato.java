@@ -20,6 +20,7 @@ public class Contato implements Serializable {
     public static String DATASESPECIAIS= "DATASESPECIAIS";
     public static String TIPODATASESPECIAIS= "TIPODATASESPECIAIS";
     public static String GRUPOS= "GRUPOS";
+    public static String FOTO= "FOTO";
 
     private long id;
     private String nome;
@@ -32,6 +33,17 @@ public class Contato implements Serializable {
     private Date datasEspeciais;
     private String tipoDatasEspeciais;
     private String grupos;
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+    //
+
+    private String foto;
 
     public Contato(){
         id = 0;

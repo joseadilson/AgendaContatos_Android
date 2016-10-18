@@ -38,6 +38,7 @@ public class RepositorioContato {
         values.put("DATASESPECIAIS", contato.getDatasEspeciais().getTime());
         values.put("TIPODATASESPECIAIS", contato.getTipoDatasEspeciais());
         values.put("GRUPOS", contato.getGrupos());
+        values.put("FOTO", contato.getFoto());
 
         return values;
     }
@@ -85,6 +86,7 @@ public class RepositorioContato {
                 contato.setDatasEspeciais(new Date(cursor.getLong( cursor.getColumnIndex(Contato.DATASESPECIAIS))));
                 contato.setTipoDatasEspeciais(cursor.getString( cursor.getColumnIndex(Contato.TIPODATASESPECIAIS)));
                 contato.setGrupos(cursor.getString( cursor.getColumnIndex(Contato.GRUPOS)));
+                contato.setFoto(cursor.getString( cursor.getColumnIndex(Contato.FOTO)));
 
 
                 adpContatos.add(contato);
