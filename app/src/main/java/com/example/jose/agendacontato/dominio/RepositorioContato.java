@@ -38,7 +38,9 @@ public class RepositorioContato {
         values.put("DATASESPECIAIS", contato.getDatasEspeciais().getTime());
         values.put("TIPODATASESPECIAIS", contato.getTipoDatasEspeciais());
         values.put("GRUPOS", contato.getGrupos());
+
         values.put("FOTO", contato.getFoto());
+
 
         return values;
     }
@@ -83,10 +85,27 @@ public class RepositorioContato {
                 contato.setTipoEmail(cursor.getString( cursor.getColumnIndex(Contato.TIPOEMAIL)));
                 contato.setEndereco(cursor.getString( cursor.getColumnIndex(Contato.ENDERECO)));
                 contato.setTipoEndereco(cursor.getString( cursor.getColumnIndex(Contato.TIPOENDERECO)));
+
+//                Date dateZerada = new Date(0);
+//                Date dataDoContado =  new Date(cursor.getLong(cursor.getColumnIndex(Contato.DATASESPECIAIS)));
+//
+//                if(dateZerada  == dataDoContado){
+//                    //Toast.makeText(context, "Ta aki", Toast.LENGTH_SHORT).show();
+//                    contato.setDatasEspeciais(new Date(0));
+//                }
+//                else{
+//                    contato.setDatasEspeciais(new Date(cursor.getLong( cursor.getColumnIndex(Contato.DATASESPECIAIS))));
+//                }
+
                 contato.setDatasEspeciais(new Date(cursor.getLong( cursor.getColumnIndex(Contato.DATASESPECIAIS))));
                 contato.setTipoDatasEspeciais(cursor.getString( cursor.getColumnIndex(Contato.TIPODATASESPECIAIS)));
                 contato.setGrupos(cursor.getString( cursor.getColumnIndex(Contato.GRUPOS)));
-                contato.setFoto(cursor.getString( cursor.getColumnIndex(Contato.FOTO)));
+
+                if(contato.getFoto() != "") {
+                   contato.setFoto(cursor.getString(cursor.getColumnIndex(Contato.FOTO)));
+                }else{
+                    contato.setFoto("");
+                }
 
 
                 adpContatos.add(contato);

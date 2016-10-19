@@ -1,5 +1,7 @@
 package com.example.jose.agendacontato.dominio.Entidades;
 
+import android.widget.Toast;
+
 import java.util.Date;
 import java.io.Serializable;
 
