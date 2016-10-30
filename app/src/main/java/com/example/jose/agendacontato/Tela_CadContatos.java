@@ -233,6 +233,7 @@ public class Tela_CadContatos extends AppCompatActivity implements View.OnClickL
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage("Excluindo...");
             progressDialog.show();
+
             repositorioContato.excluir(contato.getId());
 
         } catch (Exception ex){
@@ -295,7 +296,6 @@ public class Tela_CadContatos extends AppCompatActivity implements View.OnClickL
                 callDialog("Precisamos da sua permissão para armazenar as fotos", new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE} );
             }
             else{
-
                 //Se o usuário nunca negou a permissão, aparecerá uma mensagem pedindo permissão
                 ActivityCompat.requestPermissions(Tela_CadContatos.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_PHOTO_CODE);
             }
